@@ -23,6 +23,7 @@
   },
   "ignorePatterns": ["dist/**", "node_modules/**"],
   "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-empty-function" : 0,
     "react/require-default-props": 0,
     "prettier/prettier": 0,
