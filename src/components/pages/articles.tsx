@@ -1,28 +1,8 @@
-import React, { useState, useEffect } from 'react'
-
-type Article = {
-    title: string
-    author: string
-    date: number
-    tags: string[]
-    excerpt: string
-    urls: {
-        page: string
-        url: string
-    }[]
-}
+import React from 'react'
+import { useArticlesData } from './articles.hooks'
 
 const Articles = (): React.ReactElement => {
-    const [data, setData] = useState(null as null | Article[])
-
-    useEffect(() => {
-        const fetchData = async () => {
-            await new Promise(resolve => setTimeout(resolve, 1000)) // loading...
-            const result = await fetch('http://localhost:3031/articles/')
-            setData(await result.json() as Article[])
-        }
-        fetchData()
-    }, [])
+    const data = useArticlesData()
 
     return (
         <>
@@ -33,7 +13,7 @@ const Articles = (): React.ReactElement => {
             </header>
             <ul>
                 {data && data.map(({title, author, date, excerpt}) => (
-                    <li>
+                    <li key={`article_${date}`}>
                         <strong>{title}</strong><br />
                         <em>{`by ${author} - ${new Date(date).toUTCString()}`}</em><br />
                         <p>{excerpt}</p>
