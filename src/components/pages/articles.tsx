@@ -1,5 +1,6 @@
 import React from 'react'
-import { useArticlesData } from './articles.hooks'
+import { useArticlesData } from './Articles.hooks'
+import NavBar from '../organisms/NavBar'
 
 const Articles = (): React.ReactElement => {
     const data = useArticlesData()
@@ -11,6 +12,7 @@ const Articles = (): React.ReactElement => {
                     Articles
                 </h1>
             </header>
+            <NavBar />
             <ul>
                 {data && data.map(({title, author, date, excerpt}) => (
                     <li key={`article_${date}`}>

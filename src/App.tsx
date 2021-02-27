@@ -1,12 +1,16 @@
 import React from 'react'
 import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'connected-react-router'
 import store from './redux'
-import Articles from './components/pages/articles'
+import { history } from './redux/router'
+import Routes from './routes'
 
 function App() {
   return (
       <Provider store={store}>
-          <Articles />
+          <ConnectedRouter history={history}>
+              <Routes />
+          </ConnectedRouter>
       </Provider>
   )
 }
